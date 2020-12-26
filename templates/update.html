@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<body>    
+<h1>
+    <b>Movies Update</b>
+    <br>
+</h1>
+ <table>
+        <tr>
+            <th>Name</th>
+            <th>Image</th>
+            <th>Summary</th>
+            <th></th>
+        </tr>
+            {% for item in data %}
+            <form action='/update' method="POST">
+            <tr>
+                <td><input type="hidden" value="{{ item['name'] }}" name="old_movie">
+                    <input type="text" value="{{ item['name'] }}" name="new_movie" placeholder="Movie Name"></td>
+                <td><input type="hidden" value="{{ item['img'] }}" name="old_img">
+                    <input type="text" value="{{ item['img'] }}" name="new_img" placeholder="Image URL"></td>
+                <td><p><input type="hidden" value="{{ item['summary'] }}" name="old_summary">
+                    <input type="text" value="{{ item['summary'] }}" name="new_summary" placeholder="Summary"></p></td>
+                <td>
+                    <button type="submit">Update</button>
+                </td> 
+                
+            </tr>
+            
+            </form>
+            {% endfor %}
+    </table>
+    </body>
+</html>

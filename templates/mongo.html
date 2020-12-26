@@ -1,0 +1,40 @@
+<html>
+    <body>
+        <h1>
+            <center><b><u>Movies List API</u></b></center>
+            <br>
+        </h1>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Image</th>
+                    <th>Summary</th>
+                    <th></th>
+                </tr>
+                {% for item in data %}
+                <tr>
+                    <td>{{ item['name'] }}</td>
+                    <td><a href="{{ item['img'] }}">{{ item['img'] }}</td>
+                    <td><p>{{ item['summary'] }}</p></td>
+                    <td><form action="/remove" method="POST">
+                        <input type="hidden" value="{{ item['name'] }}" name="movie_name">
+                        <button type="submit">Remove</button>
+                    </form>
+                </td>
+                    
+                </tr>
+                {% endfor %}
+            </table>
+            <br>
+            <br>
+            <form action='/insert' method="GET">
+                <button type="submit">Add new</button>
+            </form>
+            <form action='/update' method="GET">
+                <button type="submit">Edit</button>
+            </form>
+            <form action='/display' method="GET">
+                <button type="submit">Display in Json</button>
+            </form>
+</body>
+</html>
